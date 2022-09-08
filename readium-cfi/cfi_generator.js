@@ -82,7 +82,7 @@
             // Call the recursive method to create all the steps up to the head element of the content document (the "html" element)
             contentDocCFI = this.createCFIElementSteps(startTextNode.parentNode, "html", classBlacklist,
                 elementBlacklist, idBlacklist) + textNodeStep;
-            return contentDocCFI.substring(1, contentDocCFI.length);
+            return '/0!'+contentDocCFI.substring(1, contentDocCFI.length);
         },
 
         generateElementCFIComponent: function (startElement, classBlacklist, elementBlacklist, idBlacklist) {
@@ -186,7 +186,7 @@
             });
 
             // Convert the text node index to a CFI odd-integer representation
-            var CFIIndex = (indexOfTextNode * 2) + 1;
+            var CFIIndex = (indexOfTextNode) + 1;
 
             // Return the constructed CFI text node step
             return "/" + CFIIndex + ":" + (finalCharacterOffsetInSequence + characterOffset);
@@ -206,7 +206,7 @@
             //var currNodePosition = xpathUtils.htmlXPath('count(preceding-sibling::*)', currNode);
 
             // Convert position to the CFI even-integer representation
-            var CFIPosition = (currNodePosition + 1) * 2;
+            var CFIPosition = (currNodePosition + 1);
 
             // Create CFI step with id assertion, if the element has an id
             var id = currNode.getAttribute('id');
